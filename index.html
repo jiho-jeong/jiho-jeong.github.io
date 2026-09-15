@@ -1,19 +1,537 @@
-<!doctype html>
-<html lang="ko">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Research profile · 연구자 CV</title>
-<meta name="description" content="연구 분야, 연구 성과, 학력과 경력을 소개하는 개인 연구자 홈페이지.">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%23163150'/%3E%3Cpath d='M9 8h8a5 5 0 010 10H9m0-10v17m8-7 7 7' fill='none' stroke='white' stroke-width='2.5'/%3E%3C/svg%3E">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jiho Jeong — Hydrology × AI</title>
+<meta name="description" content="Jiho Jeong, Ph.D. — Postdoctoral researcher at KICT working on physics-informed deep learning for groundwater and flood prediction.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 6C32 6 12 30 12 42a20 20 0 0 0 40 0C52 30 32 6 32 6Z' fill='%230b6e8f'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#182d43;--muted:#596979;--accent:#205cb0;--line:#dbe2e9;--paper:#fff;--wash:#f3f6f9}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:35px}body{margin:0;color:var(--ink);background:var(--paper);font:16px/1.8 -apple-system,BlinkMacSystemFont,"Segoe UI","Malgun Gothic",sans-serif}a{color:var(--accent);text-underline-offset:5px}a:focus-visible,button:focus-visible{outline:3px solid #397bdb;outline-offset:5px}.top{height:7px;background:var(--ink)}.shell{max-width:1180px;margin:auto;padding:60px 48px 32px;display:grid;grid-template-columns:240px 1fr;gap:78px}aside{align-self:start;position:sticky;top:50px}.mark{width:52px;height:52px;display:grid;place-items:center;background:var(--ink);color:white;font:italic 30px Georgia,serif;margin-bottom:26px}.eyebrow{font-size:12px;letter-spacing:.16em;font-weight:700;color:var(--muted);text-transform:uppercase}h1{font-size:30px;line-height:1.3;margin:12px 0 4px;letter-spacing:-.04em}.english{color:var(--muted);font-family:Georgia,serif;font-size:19px}.affiliation{font-size:14px;color:var(--muted);margin:22px 0 30px}.nav{border-top:1px solid var(--line);padding:19px 0;display:grid;gap:11px}.nav a{color:var(--muted);text-decoration:none;font-size:14px}.nav a:hover{color:var(--accent)}.nav span{display:inline-block;width:29px;color:#738296;font-size:12px}.print{border:1px solid #b9c5d2;background:white;padding:10px 15px;color:var(--ink);font:inherit;font-size:14px;cursor:pointer;margin-top:16px}.print:hover{background:var(--wash)}main{min-width:0}.masthead{display:flex;justify-content:space-between;gap:20px;align-items:center;padding-bottom:18px;border-bottom:1px solid var(--ink);font-size:12px;color:var(--muted);letter-spacing:.1em}.draft{letter-spacing:0;background:var(--wash);padding:3px 9px;color:var(--muted)}section{padding:36px 0;border-bottom:1px solid var(--line)}.intro{padding-top:36px}.intro h2{font:42px/1.25 Georgia,"Malgun Gothic",serif;letter-spacing:-.04em;margin:0 0 22px}.intro p{max-width:600px;margin:0;color:var(--muted)}.section-head{display:flex;align-items:baseline;gap:16px;margin-bottom:23px}.number{font:13px Georgia,serif;color:var(--accent)}h2{font-size:21px;line-height:1.4;margin:0;font-weight:650;letter-spacing:-.025em}.sub{font:14px Georgia,serif;font-weight:400;color:var(--muted);margin-left:10px}.empty{border-left:2px solid var(--line);padding:0 0 0 18px;color:var(--muted);font-size:15px}.empty strong{display:block;color:var(--ink);font-weight:500;margin-bottom:3px}.empty p{margin:0}.topics{display:flex;gap:10px;flex-wrap:wrap}.topic{padding:5px 13px;background:var(--wash);font-size:14px;color:var(--muted)}.row{display:grid;grid-template-columns:110px 1fr;gap:22px}.date{font-size:14px;color:var(--muted)}footer{padding-top:25px;display:flex;justify-content:space-between;gap:20px;color:var(--muted);font-size:12px}.skip{position:absolute;top:-80px;left:12px;padding:10px;background:white}.skip:focus{top:12px}@media(max-width:800px){.shell{padding:35px 25px;grid-template-columns:1fr;gap:30px}aside{position:static}.mark{margin-bottom:18px}h1{font-size:28px}.affiliation{margin:15px 0}.nav{display:flex;flex-wrap:wrap;gap:10px 20px;padding-bottom:0}.nav span{display:none}.print{margin-top:20px}.intro h2{font-size:34px}.sub{display:block;margin:5px 0 0}.row{grid-template-columns:80px 1fr;gap:15px}section{padding:29px 0}}@media print{.top,.nav,.print,.draft,.skip{display:none}.shell{padding:0;gap:35px;grid-template-columns:190px 1fr}aside{position:static}section{padding:20px 0;break-inside:avoid}.intro h2{font-size:30px}body{font-size:12px}.empty{font-size:12px}footer{font-size:10px}}
-</style></head>
-<body><a class="skip" href="#main">본문 바로가기</a><div class="top"></div><div class="shell">
-<aside><div class="mark" aria-hidden="true">r.</div><div class="eyebrow">Research profile</div><h1>이름 입력 예정</h1><div class="english">Your name</div><p class="affiliation">소속 · 직위 입력 예정</p><nav class="nav" aria-label="페이지 메뉴"><a href="#about"><span>01</span>소개</a><a href="#interests"><span>02</span>연구 분야</a><a href="#research"><span>03</span>연구 성과</a><a href="#education"><span>04</span>학력</a><a href="#experience"><span>05</span>경력</a><a href="#contact"><span>06</span>연락처</a></nav><button class="print" type="button" onclick="window.print()">CV 인쇄 / PDF 저장</button></aside>
-<main id="main"><div class="masthead"><span>CURRICULUM VITAE</span><span class="draft">프로필 작성 중</span></div>
-<section class="intro" id="about"><div class="eyebrow" style="margin-bottom:16px">01 / About</div><h2>연구자 소개</h2><p>연구 배경과 관심사를 소개할 공간입니다. 이름, 소속, 연구 분야와 CV를 바탕으로 내용을 채울 예정입니다.</p></section>
-<section id="interests"><div class="section-head"><span class="number">02</span><h2>연구 분야 <span class="sub">Research interests</span></h2></div><div class="topics"><span class="topic">연구 분야 입력 예정</span></div></section>
-<section id="research"><div class="section-head"><span class="number">03</span><h2>연구 성과 <span class="sub">Research & publications</span></h2></div><div class="empty"><strong>연구 성과 정리 중</strong><p>수행한 연구, 논문 및 발표 자료가 이곳에 표시됩니다.</p></div></section>
-<section id="education"><div class="section-head"><span class="number">04</span><h2>학력 <span class="sub">Education</span></h2></div><div class="row"><span class="date">기간 미입력</span><div class="empty"><strong>학교 · 학위 입력 예정</strong><p>학과 및 전공</p></div></div></section>
-<section id="experience"><div class="section-head"><span class="number">05</span><h2>경력 <span class="sub">Experience</span></h2></div><div class="row"><span class="date">기간 미입력</span><div class="empty"><strong>기관 · 직위 입력 예정</strong><p>담당 연구 및 역할</p></div></div></section>
-<section id="contact"><div class="section-head"><span class="number">06</span><h2>연락처 <span class="sub">Contact</span></h2></div><div class="empty"><p>공개할 이메일 입력 예정</p></div></section><footer><span>Research profile</span><span>공개 CV</span></footer></main></div></body></html>
+  :root{
+    --bg:#f5f9fb; --bg-2:#ffffff; --ink:#0f2433; --ink-2:#3d5566; --ink-3:#6b8090;
+    --line:#d7e3ea; --accent:#0b6e8f; --accent-2:#1aa3b8; --accent-soft:#e3f2f6;
+    --deep:#062a3d; --deep-2:#0a4a62; --tag:#e8f3f7; --tag-ink:#0b5c78;
+    --shadow:0 8px 30px rgba(6,42,61,.08);
+    --radius:14px; --max:1040px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#08161f; --bg-2:#0e2230; --ink:#e6eef3; --ink-2:#b3c4cf; --ink-3:#7f95a3;
+      --line:#1c3444; --accent:#3cc0d6; --accent-2:#6bd4e5; --accent-soft:#0f3040;
+      --deep:#04121a; --deep-2:#07283a; --tag:#0f3040; --tag-ink:#8fdcea;
+      --shadow:0 8px 30px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#08161f; --bg-2:#0e2230; --ink:#e6eef3; --ink-2:#b3c4cf; --ink-3:#7f95a3;
+    --line:#1c3444; --accent:#3cc0d6; --accent-2:#6bd4e5; --accent-soft:#0f3040;
+    --deep:#04121a; --deep-2:#07283a; --tag:#0f3040; --tag-ink:#8fdcea;
+    --shadow:0 8px 30px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:600;letter-spacing:-.01em;line-height:1.2;margin:0}
+  .mono{font-family:"JetBrains Mono",ui-monospace,monospace}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+
+  /* ---------- nav ---------- */
+  nav{position:sticky;top:0;z-index:20;backdrop-filter:blur(10px);background:color-mix(in srgb,var(--bg) 82%,transparent);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:58px;gap:12px}
+  nav .brand{font-family:Fraunces,serif;font-weight:600;font-size:1.05rem;color:var(--ink);display:flex;align-items:center;gap:8px}
+  nav .brand svg{width:20px;height:20px}
+  nav ul{display:flex;gap:4px;list-style:none;margin:0;padding:0;overflow-x:auto}
+  nav ul a{display:block;padding:6px 10px;border-radius:8px;color:var(--ink-2);font-size:.9rem;white-space:nowrap}
+  nav ul a:hover{background:var(--accent-soft);color:var(--accent);text-decoration:none}
+  #themeBtn{border:1px solid var(--line);background:var(--bg-2);color:var(--ink-2);border-radius:8px;width:34px;height:34px;cursor:pointer;display:grid;place-items:center;flex:none}
+  #themeBtn svg{width:16px;height:16px}
+
+  /* ---------- hero ---------- */
+  header.hero{position:relative;overflow:hidden;background:linear-gradient(160deg,var(--deep) 0%,var(--deep-2) 55%,#0b6e8f 130%);color:#eaf6fa;padding:72px 0 120px}
+  header.hero .wrap{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;position:relative;z-index:2}
+  .hero .eyebrow{font-family:"JetBrains Mono",monospace;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:#8fdcea;margin-bottom:14px}
+  .hero h1{font-size:clamp(2.2rem,5vw,3.4rem);color:#fff}
+  .hero h1 span{color:#8fdcea;font-weight:400;font-style:italic}
+  .hero p.lead{font-size:1.08rem;color:#c9e3ec;max-width:560px;margin:18px 0 26px}
+  .hero .links{display:flex;flex-wrap:wrap;gap:10px}
+  .hero .links a{display:inline-flex;align-items:center;gap:7px;padding:9px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.22);color:#eaf6fa;font-size:.88rem;background:rgba(255,255,255,.06);transition:.2s}
+  .hero .links a:hover{background:rgba(255,255,255,.16);text-decoration:none;transform:translateY(-1px)}
+  .hero .links a svg{width:15px;height:15px}
+  .avatar{width:196px;height:196px;border-radius:50%;object-fit:cover;border:4px solid rgba(255,255,255,.18);box-shadow:0 20px 50px rgba(0,0,0,.35);background:#fff}
+  .waves{position:absolute;left:0;right:0;bottom:-2px;z-index:1;line-height:0}
+  .waves svg{width:100%;height:110px;display:block}
+  .wave{animation:drift 14s linear infinite}
+  .wave.w2{animation-duration:22s;animation-direction:reverse;opacity:.6}
+  .wave.w3{animation-duration:30s;opacity:.35}
+  @keyframes drift{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @media (prefers-reduced-motion:reduce){.wave{animation:none}}
+  .ripples{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.35}
+  .ripples circle{fill:none;stroke:#8fdcea;stroke-width:1}
+
+  /* ---------- sections ---------- */
+  section{padding:56px 0}
+  section + section{border-top:1px solid var(--line)}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:26px}
+  .sec-head h2{font-size:1.7rem}
+  .sec-head .num{font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--accent);letter-spacing:.1em}
+  .muted{color:var(--ink-2)}
+  .small{font-size:.86rem;color:var(--ink-3)}
+
+  .grid2{display:grid;grid-template-columns:1.4fr 1fr;gap:36px}
+  .card{background:var(--bg-2);border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px;box-shadow:var(--shadow)}
+  .card h3{font-size:1.05rem;margin-bottom:8px}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+  .tag{font-size:.76rem;padding:3px 9px;border-radius:999px;background:var(--tag);color:var(--tag-ink);font-weight:500}
+
+  .interests{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:20px}
+  .interest{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border-radius:12px;background:var(--bg-2);border:1px solid var(--line)}
+  .interest .ic{width:36px;height:36px;border-radius:10px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;flex:none}
+  .interest .ic svg{width:18px;height:18px}
+  .interest b{display:block;font-size:.95rem;margin-bottom:2px}
+  .interest span{font-size:.85rem;color:var(--ink-2)}
+
+  /* stats */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:22px}
+  .stat{background:var(--bg-2);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+  .stat b{display:block;font-family:Fraunces,serif;font-size:1.7rem;color:var(--accent);line-height:1.1}
+  .stat span{font-size:.8rem;color:var(--ink-3)}
+
+  /* timeline */
+  .timeline{list-style:none;margin:0;padding:0;border-left:2px solid var(--line);margin-left:6px}
+  .timeline li{position:relative;padding:0 0 22px 22px}
+  .timeline li::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--accent);border:2px solid var(--bg)}
+  .timeline .when{font-family:"JetBrains Mono",monospace;font-size:.76rem;color:var(--accent);letter-spacing:.04em}
+  .timeline b{display:block;font-size:1rem;margin-top:2px}
+  .timeline span{display:block;color:var(--ink-2);font-size:.9rem}
+
+  /* publications */
+  .pub-filter{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
+  .pub-filter button{border:1px solid var(--line);background:var(--bg-2);color:var(--ink-2);padding:6px 12px;border-radius:999px;font-size:.84rem;cursor:pointer;font-family:inherit}
+  .pub-filter button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+  .pub{display:grid;grid-template-columns:60px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+  .pub:last-child{border-bottom:none}
+  .pub .year{font-family:"JetBrains Mono",monospace;font-size:.85rem;color:var(--accent);padding-top:3px}
+  .pub .title{font-weight:600;font-size:1rem;color:var(--ink)}
+  .pub .authors{font-size:.88rem;color:var(--ink-2);margin-top:3px}
+  .pub .authors b{color:var(--ink);font-weight:600}
+  .pub .venue{font-size:.86rem;color:var(--ink-3);margin-top:3px;font-style:italic}
+  .pub .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;align-items:center}
+  .pub .meta a{font-size:.78rem;padding:3px 9px;border-radius:6px;border:1px solid var(--line);color:var(--accent)}
+  .pub .meta a:hover{background:var(--accent-soft);text-decoration:none}
+  .badge{font-size:.72rem;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--tag-ink);font-weight:600;letter-spacing:.02em}
+  .badge.first{background:#fff3d6;color:#8a5a00}
+  :root[data-theme="dark"] .badge.first{background:#3a2c0a;color:#ffd27a}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .badge.first{background:#3a2c0a;color:#ffd27a}}
+  .pub.hidden{display:none}
+  .pub-more{margin-top:14px}
+  .pub-more button{background:none;border:1px solid var(--line);color:var(--accent);padding:8px 16px;border-radius:8px;cursor:pointer;font-family:inherit;font-size:.9rem}
+
+  /* projects */
+  .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  .proj{background:var(--bg-2);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;display:flex;flex-direction:column;gap:8px;position:relative;overflow:hidden}
+  .proj::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(var(--accent),var(--accent-2))}
+  .proj .role{font-family:"JetBrains Mono",monospace;font-size:.74rem;color:var(--accent);letter-spacing:.06em;text-transform:uppercase}
+  .proj h3{font-size:1.02rem}
+  .proj p{margin:0;font-size:.9rem;color:var(--ink-2)}
+
+  /* patents */
+  .patents{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  .patent{background:var(--bg-2);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+  .patent .no{font-family:"JetBrains Mono",monospace;font-size:.78rem;color:var(--ink-3)}
+  .patent b{display:block;margin:4px 0 2px}
+  .patent span{font-size:.86rem;color:var(--ink-2)}
+
+  /* contact */
+  .contact{background:linear-gradient(135deg,var(--deep),var(--deep-2));color:#eaf6fa;border-radius:20px;padding:40px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;position:relative;overflow:hidden}
+  .contact h2{color:#fff;font-size:1.6rem}
+  .contact p{color:#c9e3ec;margin:8px 0 0;max-width:520px}
+  .contact .btns{display:flex;flex-direction:column;gap:10px}
+  .contact .btns a{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:10px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;font-size:.9rem;white-space:nowrap}
+  .contact .btns a:hover{background:rgba(255,255,255,.2);text-decoration:none}
+  .contact .btns a svg{width:16px;height:16px}
+  .contact .bubble{position:absolute;border-radius:50%;border:1px solid rgba(143,220,234,.25);pointer-events:none}
+
+  footer{padding:30px 0 40px;text-align:center;font-size:.82rem;color:var(--ink-3)}
+  footer a{color:var(--ink-3)}
+
+  @media (max-width:820px){
+    header.hero .wrap{grid-template-columns:1fr;text-align:left}
+    header.hero .wrap .avatar-col{order:-1}
+    .avatar{width:120px;height:120px}
+    .grid2,.projects,.patents,.interests{grid-template-columns:1fr}
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .contact{grid-template-columns:1fr;padding:28px}
+    .pub{grid-template-columns:1fr;gap:4px}
+    nav ul{display:none}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 6C32 6 12 30 12 42a20 20 0 0 0 40 0C52 30 32 6 32 6Z" fill="currentColor" style="color:var(--accent)"/></svg>
+      Jiho Jeong
+    </a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#patents">Patents</a></li>
+      <li><a href="#cv">CV</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button id="themeBtn" aria-label="Toggle dark mode" title="Toggle theme">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+    </button>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <svg class="ripples" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <circle cx="1000" cy="120" r="60"/><circle cx="1000" cy="120" r="120"/><circle cx="1000" cy="120" r="180"/><circle cx="1000" cy="120" r="240"/>
+    <circle cx="150" cy="420" r="50"/><circle cx="150" cy="420" r="110"/><circle cx="150" cy="420" r="170"/>
+  </svg>
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Postdoctoral Researcher · KICT</div>
+      <h1>Jiho Jeong<br><span>Hydrology × Deep Learning</span></h1>
+      <p class="lead">I build physics-informed and transfer-learning models that make groundwater and flood prediction reliable where data are scarce — and interpretable where it matters.</p>
+      <div class="links" id="heroLinks"></div>
+    </div>
+    <div class="avatar-col"><img class="avatar" src="profile.jpg" alt="Portrait of Jiho Jeong"></div>
+  </div>
+  <div class="waves" aria-hidden="true">
+    <svg viewBox="0 0 2400 110" preserveAspectRatio="none">
+      <defs>
+        <path id="wpath" d="M0 60 C 200 20, 400 100, 600 60 S 1000 20, 1200 60 S 1600 100, 1800 60 S 2200 20, 2400 60 V110 H0 Z"/>
+      </defs>
+      <g class="wave w3" style="fill:var(--accent-2)"><use href="#wpath"/><use href="#wpath" x="2400"/></g>
+      <g class="wave w2" style="fill:var(--accent)"><use href="#wpath" y="15"/><use href="#wpath" x="2400" y="15"/></g>
+      <g class="wave" style="fill:var(--bg)"><use href="#wpath" y="35"/><use href="#wpath" x="2400" y="35"/></g>
+    </svg>
+  </div>
+</header>
+
+<main>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">01</span><h2>About</h2></div>
+    <div class="grid2">
+      <div>
+        <p class="muted" style="margin-top:0">I am a postdoctoral researcher in the <b>Department of Hydro Science and Engineering Research</b> at the Korea Institute of Civil Engineering and Building Technology (KICT). I received my Ph.D. in Geology from Kyungpook National University (2025), where my dissertation focused on <em>improving the real-world applicability of data-driven hydrogeological models through physics-informed approaches</em>.</p>
+        <p class="muted">My work sits at the boundary between hydrology and machine learning: embedding governing equations into recurrent networks, transferring knowledge from data-rich to data-scarce monitoring wells, and using generative models to disentangle climatic noise from aquifer signals. At KICT I now extend these ideas to river-flood and urban-inundation forecasting, and to LLM-based decision support for flood warning operations.</p>
+        <div class="stats" id="stats"></div>
+      </div>
+      <div class="card">
+        <h3>At a glance</h3>
+        <ul style="margin:0;padding-left:18px;color:var(--ink-2);font-size:.92rem">
+          <li>Physics-informed neural networks (PINN) for groundwater level dynamics</li>
+          <li>Transfer learning &amp; multi-station modeling under data scarcity</li>
+          <li>Generative models (DAE / CVAE) for hydraulic property estimation</li>
+          <li>AI–physics hybrid flood forecasting &amp; urban-flood surrogate models</li>
+          <li>Graph neural networks for spatiotemporal hydrology</li>
+          <li>LLM-based decision support for flood-warning operations</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">TensorFlow</span><span class="tag">GRU / Transformer</span><span class="tag">GNN</span><span class="tag">HydroGeoSphere</span><span class="tag">SWMM</span><span class="tag">ArcGIS</span><span class="tag">Flask</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="research">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">02</span><h2>Research Interests</h2></div>
+    <p class="muted" style="margin:0;max-width:720px">A common thread runs through everything below: <b>can a data-driven model be trusted in the field?</b> Each line of work attacks one reason the answer is usually "not yet."</p>
+    <div class="interests" id="interests"></div>
+  </div>
+</section>
+
+<section id="publications">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">03</span><h2>Publications</h2><span class="small">★ first author</span></div>
+    <div class="pub-filter" id="pubFilter">
+      <button data-f="all" class="on">All</button>
+      <button data-f="intl">International (SCI)</button>
+      <button data-f="first">First-author</button>
+      <button data-f="domestic">Domestic (KCI)</button>
+    </div>
+    <div id="pubList"></div>
+    <div class="pub-more"><button id="pubMoreBtn">Show all publications</button></div>
+    <p class="small" style="margin-top:14px">Full list on <a href="https://scholar.google.com/citations?user=woyb7KIAAAAJ" target="_blank" rel="noopener">Google Scholar</a>.</p>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">04</span><h2>Projects</h2></div>
+    <div class="projects" id="projectsGrid"></div>
+  </div>
+</section>
+
+<section id="patents">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">05</span><h2>Patents</h2></div>
+    <div class="patents" id="patentsGrid"></div>
+  </div>
+</section>
+
+<section id="cv">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">06</span><h2>Experience &amp; Education</h2></div>
+    <div class="grid2">
+      <div>
+        <h3 style="font-size:1.1rem;margin-bottom:16px">Experience</h3>
+        <ul class="timeline" id="experience"></ul>
+      </div>
+      <div>
+        <h3 style="font-size:1.1rem;margin-bottom:16px">Education</h3>
+        <ul class="timeline" id="education"></ul>
+        <h3 style="font-size:1.1rem;margin:10px 0 12px">Service</h3>
+        <p class="muted" style="margin:0;font-size:.92rem" id="service"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact">
+      <svg class="bubble" style="width:260px;height:260px;right:-60px;top:-80px" viewBox="0 0 100 100"><circle cx="50" cy="50" r="49" fill="none" stroke="rgba(143,220,234,.25)"/></svg>
+      <svg class="bubble" style="width:160px;height:160px;left:-40px;bottom:-60px" viewBox="0 0 100 100"><circle cx="50" cy="50" r="49" fill="none" stroke="rgba(143,220,234,.25)"/></svg>
+      <div>
+        <h2>Let's talk water &amp; models.</h2>
+        <p>Open to collaboration on physics-informed ML, groundwater/flood forecasting, and operational decision-support systems. Happy to share code and data pipelines from published work.</p>
+      </div>
+      <div class="btns" id="contactBtns"></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">© <span id="yr"></span> Jiho Jeong · Built with plain HTML/CSS/JS · <a href="https://github.com/jiho-jeong/jiho-jeong.github.io" target="_blank" rel="noopener">Source</a></div>
+</footer>
+
+<script>
+/* ============================================================
+   CONTENT — edit this block to update the site.
+   ============================================================ */
+const DATA = {
+  email: "iamwlgh@naver.com",
+  scholar: "https://scholar.google.com/citations?user=woyb7KIAAAAJ",
+  github: "https://github.com/jiho-jeong",
+  orcid: "",            // e.g. "https://orcid.org/0000-0000-0000-0000"
+  cvPdf: "",            // e.g. "cv.pdf" (put the file in the repo root)
+
+  stats: [
+    ["4", "SCI papers"],
+    ["3", "Journal of Hydrology"],
+    ["1", "Water Research"],
+    ["2", "Patents"],
+  ],
+
+  interests: [
+    { icon:"pinn", title:"Physics-informed deep learning", desc:"Embedding linear-reservoir ODEs and hydrological constraints into GRU/RNN loss functions to curb overfitting and keep predictions physically consistent." },
+    { icon:"transfer", title:"Transfer learning for data-scarce sites", desc:"Pretrained multi-well backbones with similarity-guided adaptation, so a well with one year of records can outperform a model trained on three." },
+    { icon:"gen", title:"Generative models for aquifer characterization", desc:"DAE / CVAE pipelines that strip precipitation-driven noise from groundwater level patterns to estimate hydraulic properties without field tests." },
+    { icon:"flood", title:"AI–physics hybrid flood forecasting", desc:"Coupling distributed rainfall-runoff models with multimodal deep learning and Transformer-based multi-station water-level prediction." },
+    { icon:"graph", title:"Spatiotemporal graph networks", desc:"Connectivity-aware graphs (hydraulic conductivity, transmissivity, chemistry) for nationwide borehole networks and island aquifers." },
+    { icon:"llm", title:"LLM-based decision support", desc:"Fine-tuned language models that assist forecasters in flood-warning issuance — turning model output into operational decisions." },
+  ],
+
+  // type: "intl" | "domestic" | "conf" ; first: true if Jiho is first author
+  publications: [
+    { year:2026, type:"intl", first:true,
+      title:"A physically interpretable transfer learning framework for improved generalization of data-driven groundwater level prediction",
+      authors:"<b>Jeong, J.</b>, Lee, H., Lee, S., Mbarki, S., Kim, J., Moon, S., Seo, E., Park, S.*, Jeong, J.*",
+      venue:"Water Research, 304, 126321", doi:"10.1016/j.watres.2026.126321" },
+    { year:2025, type:"intl", first:true,
+      title:"Integrating physics-based constraints with gated recurrent unit for improved groundwater level fluctuation prediction",
+      authors:"<b>Jeong, J.</b>, Jeong, J.*, Moon, S.",
+      venue:"Journal of Hydrology, 662, 134018", doi:"10.1016/j.jhydrol.2025.134018" },
+    { year:2023, type:"intl", first:true,
+      title:"Development of a surrogate model to improve the efficiency of groundwater level fluctuation pattern-based hydrologic properties evaluation",
+      authors:"<b>Jeong, J.</b>, Jeong, J.*",
+      venue:"Journal of Hydrology, 619, 129249", doi:"10.1016/j.jhydrol.2023.129249" },
+    { year:2022, type:"intl", first:false,
+      title:"Development of a data-driven ensemble regressor and its applicability for identifying contextual and collective outliers in groundwater level time-series data",
+      authors:"Kim, Y., <b>Jeong, J.</b>, Park, H., Kwon, M., Cho, C., Jeong, J.*",
+      venue:"Journal of Hydrology, 612, 128127", doi:"10.1016/j.jhydrol.2022.128127" },
+    { year:2020, type:"intl", first:true,
+      title:"Development of an efficient data-driven method to estimate the hydraulic properties of aquifers from groundwater level fluctuation pattern features",
+      authors:"<b>Jeong, J.</b>, Jeong, J.*, Park, E., Lee, B.S., Song, S.H., Han, W.S., Chung, S.",
+      venue:"Journal of Hydrology, 590, 125453", doi:"10.1016/j.jhydrol.2020.125453" },
+    { year:2024, type:"intl", first:false,
+      title:"Development of precipitation-data-based real-time slope stability estimation method considering the uncertainty of soil hydraulic properties",
+      authors:"Park, H., <b>Jeong, J.</b>, Kwon, M., Cho, C.H., Jun, S.C., Choi, J., Jeong, J.*",
+      venue:"Episodes, 47(3), 671–684", doi:"" },
+
+    { year:2026, type:"domestic", first:false,
+      title:"Applications of physics-informed neural networks in groundwater science: hydraulic parameter estimation and groundwater-level monitoring data quality management",
+      authors:"Lee, H., <b>Jeong, J.</b>, Kim, J., Jeong, J.*",
+      venue:"Economic and Environmental Geology, 59(1), 139–157", doi:"" },
+    { year:2024, type:"domestic", first:true,
+      title:"Applying transfer learning to improve the performance of deep learning-based groundwater level prediction model with insufficient training data",
+      authors:"<b>Jeong, J.</b>, Jeong, J.*",
+      venue:"Economic and Environmental Geology, 57(5), 551–562", doi:"" },
+    { year:2022, type:"domestic", first:true,
+      title:"A study on the hydraulic factors of groundwater level fluctuation by region in Jeju Island",
+      authors:"<b>Jeong, J.</b>, Park, J., Koh, E., Park, W., Jeong, J.*",
+      venue:"The Journal of Engineering Geology, 32(2), 257–270", doi:"" },
+    { year:2022, type:"domestic", first:false,
+      title:"Development of deep-learning-based models for predicting groundwater levels in the Middle-Jeju watershed, Jeju Island",
+      authors:"Park, J., <b>Jeong, J.</b>, Jeong, J.*, Kim, K.H., Shin, J., Lee, D., Jeong, S.",
+      venue:"The Journal of Engineering Geology, 32(4), 697–724", doi:"" },
+    { year:2021, type:"domestic", first:true,
+      title:"The applicability of conditional generative model generating groundwater level fluctuation corresponding to precipitation pattern",
+      authors:"<b>Jeong, J.</b>, Jeong, J.*, Lee, B.S., Song, S.H.",
+      venue:"Economic and Environmental Geology, 54(1), 77–89", doi:"" },
+    { year:2021, type:"domestic", first:false,
+      title:"Data-driven analysis for developing the effective groundwater management system in Daejeong-Hangyeong watershed in Jeju Island",
+      authors:"Lee, S., <b>Jeong, J.</b>, Kim, M., Park, W., Kim, Y., Park, J., Park, H., Park, G., Jeong, J.*",
+      venue:"Economic and Environmental Geology, 54(3), 373–387", doi:"" },
+    { year:2025, type:"domestic", first:false,
+      title:"A case study of legal criteria implementation for high-level radioactive waste disposal site evaluation: insights into geological data utilization in Germany",
+      authors:"So, S., Park, J., Kim, S., Lee, H., Lee, S., <b>Jeong, J.</b>, Mbarki, S., Jeong, J.*",
+      venue:"Economic and Environmental Geology, 58(4), 383–399", doi:"" },
+    { year:2024, type:"domestic", first:false,
+      title:"Evaluation of hydrogeological characteristic of natural barrier in Korea for establishing safety guidelines of deep geological high-level radioactive waste disposal site",
+      authors:"So, S., <b>Jeong, J.</b>, Park, J., Lee, H., Lee, S., Kim, S., Mbarki, S., Jeong, J.*",
+      venue:"Economic and Environmental Geology, 57(4), 397–416", doi:"" },
+    { year:2023, type:"domestic", first:false,
+      title:"Geological factor analysis for evaluating the long-term safety performance of natural barriers in deep geological repository system of high-level radioactive waste",
+      authors:"Lee, H., <b>Jeong, J.</b>, Park, J., Lee, S., So, S., Jeong, J.*",
+      venue:"Economic and Environmental Geology, 56(5), 533–545", doi:"" },
+    { year:2025, type:"conf", first:true,
+      title:"Development of physics-informed recurrent neural network to predict actual groundwater level fluctuation according to precipitation time-series event",
+      authors:"<b>Jeong, J.</b>, Jeong, J.",
+      venue:"EGU General Assembly 2025, EGU25-5434", doi:"" },
+  ],
+
+  projects: [
+    { role:"Participating researcher · proposal lead", title:"AI–physics hybrid flood forecasting for expanded flood-warning stations",
+      desc:"KEITI Climate-Adaptation Water-Disaster R&D (RS-2026-25504052). Coordinated the multi-institution proposal; now developing multimodal deep-learning forecasting on top of distributed rainfall-runoff outputs and an LLM-based flood-warning decision-support system.", tags:["Hybrid modeling","Transformer","LLM","2026–"] },
+    { role:"Participating researcher", title:"Deep-learning surrogate for urban inundation (SWMM 1D–2D)",
+      desc:"Two-stage surrogate model — rainfall → manhole overflow → surface inundation — that replaces the compute bottleneck of physically based urban-flood simulation, enabling thousands of scenario runs for climate risk assessment.", tags:["Surrogate model","Urban flood","Data QA"] },
+    { role:"Researcher", title:"Multi-station flood water-level prediction, Yeongsan River basin",
+      desc:"Masked transfer learning with adaptive gating for Transformer-based prediction across 57 stations (31 reference, 26 target) at 10-minute resolution, with outlier-aware preprocessing for the Yeongsan River Flood Control Office.", tags:["Transfer learning","Flood forecasting","In preparation"] },
+    { role:"Co-author", title:"Connectivity-aware graph learning for island & nationwide aquifers",
+      desc:"Hybrid adjacency (hydraulic properties + chemistry) with DCRNN/GRU for Jeju groundwater monitoring (under review), extended to a 968-borehole national network for spatiotemporal groundwater prediction.", tags:["GNN","Spatiotemporal","Under review"] },
+  ],
+
+  patents: [
+    { no:"KR 10-2614096", title:"Apparatus and method for generating a prediction model (예측 모델 생성 장치 및 방법)", holder:"Kyungpook National University · registered Dec 2023" },
+    { no:"KR 10-2615493", title:"Deep-learning-based probabilistic prediction of normal groundwater level range (딥러닝 기반 지하수위 정상 범위 확률론적 예측 장치 및 그 방법)", holder:"Kyungpook National University · registered Dec 2023" },
+  ],
+
+  experience: [
+    { when:"2025 – present", title:"Postdoctoral Researcher", org:"Korea Institute of Civil Engineering and Building Technology (KICT), Dept. of Hydro Science and Engineering Research" },
+    { when:"2025", title:"Researcher", org:"Institute of Sustainable Earth and Environmental Dynamics (SEED), Pukyong National University" },
+    { when:"2018 – 2025", title:"Graduate Researcher · Lab manager (7 yrs)", org:"Hydrogeology & Data Science Lab, Dept. of Geology, Kyungpook National University" },
+  ],
+  education: [
+    { when:"2025", title:"Ph.D. in Geology (Geological Data Science)", org:"Kyungpook National University — Dissertation: Improving real-world applicability of data-driven hydrogeological models through physics-informed approaches" },
+    { when:"", title:"M.S. in Geology", org:"Kyungpook National University" },
+  ],
+  service: "Reviewer for hydrology and geoscience journals (groundwater time-series, streamflow depletion). Short-course lecturer, 2026 Spring Joint Conference on Geological Sciences — AI applications in water resources.",
+};
+
+/* ============================================================ */
+const ICONS = {
+  pinn:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 17c3-6 6-6 9 0s6 6 9 0"/><path d="M12 3v6"/><path d="M9 6l3-3 3 3"/></svg>',
+  transfer:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 8h13l-3-3"/><path d="M20 16H7l3 3"/></svg>',
+  gen:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="6" width="6" height="12" rx="1"/><rect x="15" y="6" width="6" height="12" rx="1"/><path d="M9 12h6"/></svg>',
+  flood:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3s-6 7-6 11a6 6 0 0 0 12 0c0-4-6-11-6-11Z"/></svg>',
+  graph:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M7 7l4 9M17 7l-4 9M7 6h10"/></svg>',
+  llm:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 5h16v10H9l-5 4V5Z"/><path d="M8 9h8M8 12h5"/></svg>',
+  mail:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>',
+  scholar:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 10 12 5l10 5-10 5-10-5Z"/><path d="M6 12v4c0 1.5 3 3 6 3s6-1.5 6-3v-4"/></svg>',
+  github:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.9 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5Z"/></svg>',
+  orcid:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M9 8v8M13 8h2.5a4 4 0 0 1 0 8H13V8Z"/></svg>',
+  cv:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 3h8l4 4v14H6V3Z"/><path d="M14 3v4h4M9 12h6M9 16h6"/></svg>',
+};
+
+function $(s){return document.querySelector(s)}
+const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;");
+
+/* links */
+const links = [
+  ["mail","Email",`mailto:${DATA.email}`],
+  ["scholar","Google Scholar",DATA.scholar],
+  ["github","GitHub",DATA.github],
+];
+if(DATA.orcid) links.push(["orcid","ORCID",DATA.orcid]);
+if(DATA.cvPdf) links.push(["cv","CV (PDF)",DATA.cvPdf]);
+$("#heroLinks").innerHTML = links.map(([i,l,h])=>`<a href="${h}" ${h.startsWith("http")?'target="_blank" rel="noopener"':''}>${ICONS[i]}${l}</a>`).join("");
+$("#contactBtns").innerHTML = links.map(([i,l,h])=>`<a href="${h}" ${h.startsWith("http")?'target="_blank" rel="noopener"':''}>${ICONS[i]}${i==="mail"?DATA.email:l}</a>`).join("");
+
+/* stats */
+$("#stats").innerHTML = DATA.stats.map(([n,l])=>`<div class="stat"><b>${n}</b><span>${l}</span></div>`).join("");
+
+/* interests */
+$("#interests").innerHTML = DATA.interests.map(i=>`<div class="interest"><div class="ic">${ICONS[i.icon]}</div><div><b>${i.title}</b><span>${i.desc}</span></div></div>`).join("");
+
+/* publications */
+const pubs = [...DATA.publications].sort((a,b)=>b.year-a.year || (b.type==="intl")-(a.type==="intl"));
+const LIMIT = 6;
+let filter="all", expanded=false;
+function renderPubs(){
+  const list = pubs.filter(p => filter==="all" || (filter==="first"?p.first:p.type===filter));
+  $("#pubList").innerHTML = list.map((p,idx)=>`
+    <div class="pub ${(!expanded && idx>=LIMIT)?'hidden':''}">
+      <div class="year">${p.year}</div>
+      <div>
+        <div class="title">${p.title}</div>
+        <div class="authors">${p.authors}</div>
+        <div class="venue">${p.venue}</div>
+        <div class="meta">
+          ${p.first?'<span class="badge first">★ First author</span>':''}
+          <span class="badge">${p.type==="intl"?"SCI":p.type==="domestic"?"KCI":"Conference"}</span>
+          ${p.doi?`<a href="https://doi.org/${p.doi}" target="_blank" rel="noopener">DOI</a>`:''}
+        </div>
+      </div>
+    </div>`).join("");
+  const btn = $("#pubMoreBtn");
+  btn.style.display = list.length>LIMIT ? "" : "none";
+  btn.textContent = expanded ? "Show fewer" : `Show all ${list.length} publications`;
+}
+$("#pubFilter").addEventListener("click",e=>{
+  const b=e.target.closest("button"); if(!b) return;
+  filter=b.dataset.f; expanded=false;
+  document.querySelectorAll("#pubFilter button").forEach(x=>x.classList.toggle("on",x===b));
+  renderPubs();
+});
+$("#pubMoreBtn").addEventListener("click",()=>{expanded=!expanded;renderPubs();});
+renderPubs();
+
+/* projects / patents / cv */
+$("#projectsGrid").innerHTML = DATA.projects.map(p=>`<div class="proj"><div class="role">${p.role}</div><h3>${p.title}</h3><p>${p.desc}</p><div class="tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join("")}</div></div>`).join("");
+$("#patentsGrid").innerHTML = DATA.patents.map(p=>`<div class="patent"><div class="no">${p.no}</div><b>${p.title}</b><span>${p.holder}</span></div>`).join("");
+$("#experience").innerHTML = DATA.experience.map(e=>`<li><span class="when">${e.when}</span><b>${e.title}</b><span>${e.org}</span></li>`).join("");
+$("#education").innerHTML = DATA.education.map(e=>`<li><span class="when">${e.when}</span><b>${e.title}</b><span>${e.org}</span></li>`).join("");
+$("#service").textContent = DATA.service;
+$("#yr").textContent = new Date().getFullYear();
+
+/* theme toggle */
+const root=document.documentElement;
+try{ const t=localStorage.getItem("theme"); if(t) root.dataset.theme=t; }catch(e){}
+$("#themeBtn").addEventListener("click",()=>{
+  const dark = root.dataset.theme==="dark" || (!root.dataset.theme && matchMedia("(prefers-color-scheme: dark)").matches);
+  root.dataset.theme = dark ? "light" : "dark";
+  try{ localStorage.setItem("theme", root.dataset.theme); }catch(e){}
+});
+</script>
+</body>
+</html>
