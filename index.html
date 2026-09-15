@@ -285,8 +285,6 @@
       <div class="card glass lift reveal">
         <h3>Education</h3>
         <ul class="timeline" id="education"></ul>
-        <h3 style="margin:6px 0 8px">Service</h3>
-        <p class="muted" style="margin:0;font-size:.92rem" id="service"></p>
       </div>
     </div>
   </div>
@@ -421,7 +419,6 @@ const DATA = {
     { when:"2025", title:"Ph.D. in Geology (Geological Data Science)", org:"Kyungpook National University — Dissertation: Improving real-world applicability of data-driven hydrogeological models through physics-informed approaches" },
     { when:"", title:"M.S. in Geology", org:"Kyungpook National University" },
   ],
-  service: "Reviewer for hydrology and geoscience journals (groundwater time-series, streamflow depletion). Short-course lecturer, 2026 Spring Joint Conference on Geological Sciences — AI applications in water resources.",
 };
 const ICONS = {
   pinn:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 17c3-6 6-6 9 0s6 6 9 0"/><path d="M12 3v6"/><path d="M9 6l3-3 3 3"/></svg>',
@@ -494,7 +491,6 @@ renderPubs();
 $("#patentsGrid").innerHTML = DATA.patents.map(p=>`<div class="patent glass lift reveal"><div class="no">${p.no}</div><b>${p.title}</b><span>${p.holder}</span></div>`).join("");
 $("#experience").innerHTML = DATA.experience.map(e=>`<li><span class="when">${e.when}</span><b>${e.title}</b><span>${e.org}</span></li>`).join("");
 $("#education").innerHTML = DATA.education.map(e=>`<li><span class="when">${e.when}</span><b>${e.title}</b><span>${e.org}</span></li>`).join("");
-$("#service").textContent = DATA.service;
 $("#yr").textContent = new Date().getFullYear();
 
 /* theme toggle (dark default) */
