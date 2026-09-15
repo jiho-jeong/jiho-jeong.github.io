@@ -4,169 +4,185 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jiho Jeong — Hydrology × AI</title>
-<meta name="description" content="Jiho Jeong, Ph.D. — Postdoctoral researcher at KICT working on physics-informed deep learning for groundwater and flood prediction.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 6C32 6 12 30 12 42a20 20 0 0 0 40 0C52 30 32 6 32 6Z' fill='%230b6e8f'/%3E%3C/svg%3E">
+<meta name="description" content="Jiho Jeong, Ph.D. — Postdoctoral researcher at KICT working on deep learning, hybrid physics–AI modeling, and hydrogeology.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 6C32 6 12 30 12 42a20 20 0 0 0 40 0C52 30 32 6 32 6Z' fill='%2360c8ff'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+  /* ---------- tokens (dark = default, Apple-ish) ---------- */
   :root{
-    --bg:#f5f9fb; --bg-2:#ffffff; --ink:#0f2433; --ink-2:#3d5566; --ink-3:#6b8090;
-    --line:#d7e3ea; --accent:#0b6e8f; --accent-2:#1aa3b8; --accent-soft:#e3f2f6;
-    --deep:#062a3d; --deep-2:#0a4a62; --tag:#e8f3f7; --tag-ink:#0b5c78;
-    --shadow:0 8px 30px rgba(6,42,61,.08);
-    --radius:14px; --max:1040px;
+    --bg:#070c14; --bg-glow-1:rgba(56,140,255,.28); --bg-glow-2:rgba(40,200,220,.18); --bg-glow-3:rgba(120,90,255,.16);
+    --ink:#f2f6fa; --ink-2:#b5c2d0; --ink-3:#7d8a99;
+    --glass:rgba(255,255,255,.055); --glass-2:rgba(255,255,255,.09); --glass-line:rgba(255,255,255,.12); --glass-hi:rgba(255,255,255,.28);
+    --accent:#6ac8ff; --accent-2:#3ee6c5; --accent-ink:#04131c;
+    --tag:rgba(106,200,255,.14); --tag-ink:#9edcff;
+    --shadow:0 20px 50px rgba(0,0,0,.45), inset 0 1px 0 var(--glass-hi);
+    --r:22px; --max:1040px;
+    --spring:cubic-bezier(.34,1.56,.64,1); --ease:cubic-bezier(.22,1,.36,1);
   }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --bg:#08161f; --bg-2:#0e2230; --ink:#e6eef3; --ink-2:#b3c4cf; --ink-3:#7f95a3;
-      --line:#1c3444; --accent:#3cc0d6; --accent-2:#6bd4e5; --accent-soft:#0f3040;
-      --deep:#04121a; --deep-2:#07283a; --tag:#0f3040; --tag-ink:#8fdcea;
-      --shadow:0 8px 30px rgba(0,0,0,.35);
-    }
-  }
-  :root[data-theme="dark"]{
-    --bg:#08161f; --bg-2:#0e2230; --ink:#e6eef3; --ink-2:#b3c4cf; --ink-3:#7f95a3;
-    --line:#1c3444; --accent:#3cc0d6; --accent-2:#6bd4e5; --accent-soft:#0f3040;
-    --deep:#04121a; --deep-2:#07283a; --tag:#0f3040; --tag-ink:#8fdcea;
-    --shadow:0 8px 30px rgba(0,0,0,.35);
+  :root[data-theme="light"]{
+    --bg:#eef3f8; --bg-glow-1:rgba(56,140,255,.22); --bg-glow-2:rgba(40,200,220,.18); --bg-glow-3:rgba(150,120,255,.14);
+    --ink:#0e1a26; --ink-2:#44586b; --ink-3:#7a8a99;
+    --glass:rgba(255,255,255,.55); --glass-2:rgba(255,255,255,.75); --glass-line:rgba(255,255,255,.9); --glass-hi:rgba(255,255,255,1);
+    --accent:#0a7ed8; --accent-2:#0aa38a; --accent-ink:#fff;
+    --tag:rgba(10,126,216,.10); --tag-ink:#085fa5;
+    --shadow:0 18px 40px rgba(20,50,90,.12), inset 0 1px 0 var(--glass-hi);
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .4s,color .4s}
   a{color:var(--accent);text-decoration:none}
   a:hover{text-decoration:underline}
-  h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:600;letter-spacing:-.01em;line-height:1.2;margin:0}
-  .mono{font-family:"JetBrains Mono",ui-monospace,monospace}
+  h1,h2,h3{font-weight:700;letter-spacing:-.02em;line-height:1.15;margin:0}
   .wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+  .mono{font-family:"JetBrains Mono",ui-monospace,monospace}
 
-  /* ---------- nav ---------- */
-  nav{position:sticky;top:0;z-index:20;backdrop-filter:blur(10px);background:color-mix(in srgb,var(--bg) 82%,transparent);border-bottom:1px solid var(--line)}
-  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:58px;gap:12px}
-  nav .brand{font-family:Fraunces,serif;font-weight:600;font-size:1.05rem;color:var(--ink);display:flex;align-items:center;gap:8px}
-  nav .brand svg{width:20px;height:20px}
-  nav ul{display:flex;gap:4px;list-style:none;margin:0;padding:0;overflow-x:auto}
-  nav ul a{display:block;padding:6px 10px;border-radius:8px;color:var(--ink-2);font-size:.9rem;white-space:nowrap}
-  nav ul a:hover{background:var(--accent-soft);color:var(--accent);text-decoration:none}
-  #themeBtn{border:1px solid var(--line);background:var(--bg-2);color:var(--ink-2);border-radius:8px;width:34px;height:34px;cursor:pointer;display:grid;place-items:center;flex:none}
+  /* ---------- ambient background blobs ---------- */
+  .bgfx{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+  .blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.9;animation:float 22s ease-in-out infinite alternate}
+  .blob.b1{width:640px;height:640px;left:-160px;top:-200px;background:var(--bg-glow-1)}
+  .blob.b2{width:520px;height:520px;right:-140px;top:120px;background:var(--bg-glow-2);animation-duration:28s}
+  .blob.b3{width:600px;height:600px;left:35%;bottom:-260px;background:var(--bg-glow-3);animation-duration:34s}
+  @keyframes float{from{transform:translate(0,0) scale(1)}to{transform:translate(60px,40px) scale(1.12)}}
+  .bgfx .grain{position:absolute;inset:0;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+  /* ---------- glass primitive ---------- */
+  .glass{background:var(--glass);border:1px solid var(--glass-line);border-radius:var(--r);box-shadow:var(--shadow);backdrop-filter:blur(22px) saturate(160%);-webkit-backdrop-filter:blur(22px) saturate(160%);position:relative}
+  .glass::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(135deg,rgba(255,255,255,.12),transparent 40%,transparent 70%,rgba(255,255,255,.05))}
+  .lift{transition:transform .5s var(--spring),box-shadow .5s var(--ease),background .3s}
+  .lift:hover{transform:translateY(-4px) scale(1.012);background:var(--glass-2)}
+
+  /* ---------- floating pill nav ---------- */
+  nav{position:fixed;top:14px;left:0;right:0;z-index:50;display:flex;justify-content:center;padding:0 12px;pointer-events:none}
+  nav .pill{pointer-events:auto;display:flex;align-items:center;gap:4px;padding:6px 8px 6px 14px;border-radius:999px;transition:transform .5s var(--spring)}
+  nav .brand{font-weight:700;font-size:.95rem;color:var(--ink);display:flex;align-items:center;gap:8px;margin-right:6px}
+  nav .brand svg{width:18px;height:18px}
+  nav ul{display:flex;gap:2px;list-style:none;margin:0;padding:0}
+  nav ul a{display:block;padding:7px 12px;border-radius:999px;color:var(--ink-2);font-size:.86rem;font-weight:500;transition:background .25s,color .25s,transform .4s var(--spring)}
+  nav ul a:hover{background:var(--glass-2);color:var(--ink);text-decoration:none;transform:translateY(-1px)}
+  nav ul a.active{background:var(--accent);color:var(--accent-ink)}
+  #themeBtn{border:1px solid var(--glass-line);background:var(--glass-2);color:var(--ink);border-radius:999px;width:34px;height:34px;cursor:pointer;display:grid;place-items:center;flex:none;margin-left:4px;transition:transform .5s var(--spring)}
+  #themeBtn:hover{transform:rotate(-20deg) scale(1.08)}
   #themeBtn svg{width:16px;height:16px}
 
   /* ---------- hero ---------- */
-  header.hero{position:relative;overflow:hidden;background:linear-gradient(160deg,var(--deep) 0%,var(--deep-2) 55%,#0b6e8f 130%);color:#eaf6fa;padding:72px 0 120px}
-  header.hero .wrap{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;position:relative;z-index:2}
-  .hero .eyebrow{font-family:"JetBrains Mono",monospace;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:#8fdcea;margin-bottom:14px}
-  .hero h1{font-size:clamp(2.2rem,5vw,3.4rem);color:#fff}
-  .hero h1 span{color:#8fdcea;font-weight:400;font-style:italic}
-  .hero p.lead{font-size:1.08rem;color:#c9e3ec;max-width:560px;margin:18px 0 26px}
+  header.hero{padding:130px 0 60px}
+  header.hero .wrap{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}
+  .hero .eyebrow{font-family:"JetBrains Mono",monospace;font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px}
+  .hero .eyebrow i{width:7px;height:7px;border-radius:50%;background:var(--accent-2);box-shadow:0 0 0 0 rgba(62,230,197,.6);animation:pulse 2.4s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(62,230,197,.55)}70%{box-shadow:0 0 0 10px rgba(62,230,197,0)}100%{box-shadow:0 0 0 0 rgba(62,230,197,0)}}
+  .hero h1{font-size:clamp(2.4rem,5.5vw,3.8rem)}
+  .hero h1 span{display:block;font-weight:500;font-size:.62em;letter-spacing:-.01em;background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent;margin-top:6px}
+  .hero p.lead{font-size:1.1rem;color:var(--ink-2);max-width:560px;margin:20px 0 28px}
   .hero .links{display:flex;flex-wrap:wrap;gap:10px}
-  .hero .links a{display:inline-flex;align-items:center;gap:7px;padding:9px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.22);color:#eaf6fa;font-size:.88rem;background:rgba(255,255,255,.06);transition:.2s}
-  .hero .links a:hover{background:rgba(255,255,255,.16);text-decoration:none;transform:translateY(-1px)}
-  .hero .links a svg{width:15px;height:15px}
-  .avatar{width:196px;height:196px;border-radius:50%;object-fit:cover;border:4px solid rgba(255,255,255,.18);box-shadow:0 20px 50px rgba(0,0,0,.35);background:#fff}
-  .waves{position:absolute;left:0;right:0;bottom:-2px;z-index:1;line-height:0}
-  .waves svg{width:100%;height:110px;display:block}
-  .wave{animation:drift 14s linear infinite}
-  .wave.w2{animation-duration:22s;animation-direction:reverse;opacity:.6}
-  .wave.w3{animation-duration:30s;opacity:.35}
-  @keyframes drift{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-  @media (prefers-reduced-motion:reduce){.wave{animation:none}}
-  .ripples{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.35}
-  .ripples circle{fill:none;stroke:#8fdcea;stroke-width:1}
+  .hero .links a,.contact .btns a{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;color:var(--ink);font-size:.88rem;font-weight:500;background:var(--glass);border:1px solid var(--glass-line);backdrop-filter:blur(14px);transition:transform .5s var(--spring),background .3s}
+  .hero .links a:hover,.contact .btns a:hover{background:var(--glass-2);text-decoration:none;transform:translateY(-3px) scale(1.04)}
+  .hero .links a svg,.contact .btns a svg{width:15px;height:15px}
+  .avatar-wrap{position:relative;width:210px;height:210px}
+  .avatar-wrap::before{content:"";position:absolute;inset:-14px;border-radius:50%;background:conic-gradient(from 0deg,var(--accent),var(--accent-2),#8f7bff,var(--accent));filter:blur(18px);opacity:.55;animation:spin 14s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .avatar{position:relative;width:100%;height:100%;border-radius:50%;object-fit:cover;border:3px solid var(--glass-hi);box-shadow:0 30px 60px rgba(0,0,0,.45);transition:transform .6s var(--spring)}
+  .avatar-wrap:hover .avatar{transform:scale(1.05) rotate(-2deg)}
 
   /* ---------- sections ---------- */
-  section{padding:56px 0}
-  section + section{border-top:1px solid var(--line)}
-  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:26px}
-  .sec-head h2{font-size:1.7rem}
-  .sec-head .num{font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--accent);letter-spacing:.1em}
+  section{padding:48px 0}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:24px}
+  .sec-head h2{font-size:1.75rem}
+  .sec-head .num{font-family:"JetBrains Mono",monospace;font-size:.78rem;color:var(--accent);letter-spacing:.1em}
   .muted{color:var(--ink-2)}
   .small{font-size:.86rem;color:var(--ink-3)}
+  .grid2{display:grid;grid-template-columns:1.4fr 1fr;gap:24px;align-items:start}
+  .card{padding:24px 26px}
+  .card h3{font-size:1.05rem;margin-bottom:10px}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+  .tag{font-size:.76rem;padding:4px 10px;border-radius:999px;background:var(--tag);color:var(--tag-ink);font-weight:500;border:1px solid var(--glass-line);transition:transform .4s var(--spring)}
+  .tag:hover{transform:scale(1.08)}
 
-  .grid2{display:grid;grid-template-columns:1.4fr 1fr;gap:36px}
-  .card{background:var(--bg-2);border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px;box-shadow:var(--shadow)}
-  .card h3{font-size:1.05rem;margin-bottom:8px}
-  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-  .tag{font-size:.76rem;padding:3px 9px;border-radius:999px;background:var(--tag);color:var(--tag-ink);font-weight:500}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:22px}
+  .stat{padding:16px 18px;border-radius:18px}
+  .stat b{display:block;font-size:1.8rem;line-height:1.1;background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .stat span{font-size:.78rem;color:var(--ink-3)}
 
-  .interests{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:20px}
-  .interest{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border-radius:12px;background:var(--bg-2);border:1px solid var(--line)}
-  .interest .ic{width:36px;height:36px;border-radius:10px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;flex:none}
-  .interest .ic svg{width:18px;height:18px}
+  .interests{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:22px}
+  .interest{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;border-radius:18px}
+  .interest .ic{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:var(--accent-ink);display:grid;place-items:center;flex:none;box-shadow:0 8px 20px rgba(60,200,255,.25)}
+  .interest .ic svg{width:19px;height:19px}
   .interest b{display:block;font-size:.95rem;margin-bottom:2px}
   .interest span{font-size:.85rem;color:var(--ink-2)}
 
-  /* stats */
-  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:22px}
-  .stat{background:var(--bg-2);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
-  .stat b{display:block;font-family:Fraunces,serif;font-size:1.7rem;color:var(--accent);line-height:1.1}
-  .stat span{font-size:.8rem;color:var(--ink-3)}
-
-  /* timeline */
-  .timeline{list-style:none;margin:0;padding:0;border-left:2px solid var(--line);margin-left:6px}
+  .timeline{list-style:none;margin:0;padding:0;border-left:2px solid var(--glass-line);margin-left:6px}
   .timeline li{position:relative;padding:0 0 22px 22px}
-  .timeline li::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--accent);border:2px solid var(--bg)}
-  .timeline .when{font-family:"JetBrains Mono",monospace;font-size:.76rem;color:var(--accent);letter-spacing:.04em}
+  .timeline li::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--tag)}
+  .timeline .when{font-family:"JetBrains Mono",monospace;font-size:.74rem;color:var(--accent);letter-spacing:.04em}
   .timeline b{display:block;font-size:1rem;margin-top:2px}
   .timeline span{display:block;color:var(--ink-2);font-size:.9rem}
 
   /* publications */
-  .pub-filter{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
-  .pub-filter button{border:1px solid var(--line);background:var(--bg-2);color:var(--ink-2);padding:6px 12px;border-radius:999px;font-size:.84rem;cursor:pointer;font-family:inherit}
-  .pub-filter button.on{background:var(--accent);border-color:var(--accent);color:#fff}
-  .pub{display:grid;grid-template-columns:60px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+  .pub-panel{padding:8px 26px}
+  .pub-filter{display:inline-flex;gap:4px;flex-wrap:wrap;margin:14px 0 8px;padding:4px;border-radius:999px;background:var(--glass);border:1px solid var(--glass-line)}
+  .pub-filter button{border:0;background:transparent;color:var(--ink-2);padding:7px 14px;border-radius:999px;font-size:.84rem;font-weight:500;cursor:pointer;font-family:inherit;transition:background .3s,color .3s,transform .4s var(--spring)}
+  .pub-filter button:hover{transform:translateY(-1px);color:var(--ink)}
+  .pub-filter button.on{background:var(--accent);color:var(--accent-ink);box-shadow:0 6px 16px rgba(60,200,255,.25)}
+  .pub{display:grid;grid-template-columns:60px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid var(--glass-line);animation:pop .55s var(--spring) both}
   .pub:last-child{border-bottom:none}
+  @keyframes pop{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
   .pub .year{font-family:"JetBrains Mono",monospace;font-size:.85rem;color:var(--accent);padding-top:3px}
   .pub .title{font-weight:600;font-size:1rem;color:var(--ink)}
   .pub .authors{font-size:.88rem;color:var(--ink-2);margin-top:3px}
   .pub .authors b{color:var(--ink);font-weight:600}
   .pub .venue{font-size:.86rem;color:var(--ink-3);margin-top:3px;font-style:italic}
   .pub .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;align-items:center}
-  .pub .meta a{font-size:.78rem;padding:3px 9px;border-radius:6px;border:1px solid var(--line);color:var(--accent)}
-  .pub .meta a:hover{background:var(--accent-soft);text-decoration:none}
-  .badge{font-size:.72rem;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--tag-ink);font-weight:600;letter-spacing:.02em}
-  .badge.first{background:#fff3d6;color:#8a5a00}
-  :root[data-theme="dark"] .badge.first{background:#3a2c0a;color:#ffd27a}
-  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .badge.first{background:#3a2c0a;color:#ffd27a}}
+  .pub .meta a{font-size:.78rem;padding:4px 10px;border-radius:999px;border:1px solid var(--glass-line);color:var(--accent);background:var(--glass);transition:transform .4s var(--spring),background .3s}
+  .pub .meta a:hover{background:var(--glass-2);text-decoration:none;transform:scale(1.06)}
+  .badge{font-size:.72rem;padding:3px 9px;border-radius:999px;background:var(--tag);color:var(--tag-ink);font-weight:600;letter-spacing:.02em}
+  .badge.first{background:rgba(255,200,90,.16);color:#ffd27a}
+  :root[data-theme="light"] .badge.first{background:#fff1cc;color:#8a5a00}
   .pub.hidden{display:none}
-  .pub-more{margin-top:14px}
-  .pub-more button{background:none;border:1px solid var(--line);color:var(--accent);padding:8px 16px;border-radius:8px;cursor:pointer;font-family:inherit;font-size:.9rem}
+  .pub-more{margin:12px 0 14px}
+  .pub-more button{background:var(--glass);border:1px solid var(--glass-line);color:var(--ink);padding:9px 18px;border-radius:999px;cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:500;transition:transform .5s var(--spring),background .3s}
+  .pub-more button:hover{transform:translateY(-2px) scale(1.03);background:var(--glass-2)}
 
-  /* patents */
   .patents{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-  .patent{background:var(--bg-2);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
-  .patent .no{font-family:"JetBrains Mono",monospace;font-size:.78rem;color:var(--ink-3)}
+  .patent{padding:18px 20px}
+  .patent .no{font-family:"JetBrains Mono",monospace;font-size:.76rem;color:var(--ink-3)}
   .patent b{display:block;margin:4px 0 2px}
   .patent span{font-size:.86rem;color:var(--ink-2)}
 
-  /* contact */
-  .contact{background:linear-gradient(135deg,var(--deep),var(--deep-2));color:#eaf6fa;border-radius:20px;padding:40px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;position:relative;overflow:hidden}
-  .contact h2{color:#fff;font-size:1.6rem}
-  .contact p{color:#c9e3ec;margin:8px 0 0;max-width:520px}
+  .contact{padding:40px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;overflow:hidden}
+  .contact h2{font-size:1.6rem}
+  .contact p{color:var(--ink-2);margin:8px 0 0;max-width:520px}
   .contact .btns{display:flex;flex-direction:column;gap:10px}
-  .contact .btns a{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:10px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;font-size:.9rem;white-space:nowrap}
-  .contact .btns a:hover{background:rgba(255,255,255,.2);text-decoration:none}
-  .contact .btns a svg{width:16px;height:16px}
-  .contact .bubble{position:absolute;border-radius:50%;border:1px solid rgba(143,220,234,.25);pointer-events:none}
+  .contact .btns a{border-radius:14px;white-space:nowrap}
+  .contact .orb{position:absolute;border-radius:50%;filter:blur(40px);opacity:.5;pointer-events:none}
 
   footer{padding:30px 0 40px;text-align:center;font-size:.82rem;color:var(--ink-3)}
   footer a{color:var(--ink-3)}
 
+  /* ---------- scroll reveal (spring) ---------- */
+  .reveal{opacity:0;transform:translateY(28px) scale(.97);transition:opacity .7s var(--ease),transform .9s var(--spring)}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.blob,.avatar-wrap::before,.hero .eyebrow i{animation:none}.lift,.pub{transition:none;animation:none}}
+
   @media (max-width:820px){
-    header.hero .wrap{grid-template-columns:1fr;text-align:left}
+    header.hero{padding-top:100px}
+    header.hero .wrap{grid-template-columns:1fr}
     header.hero .wrap .avatar-col{order:-1}
-    .avatar{width:120px;height:120px}
-    .grid2,.projects,.patents,.interests{grid-template-columns:1fr}
+    .avatar-wrap{width:130px;height:130px}
+    .grid2,.patents,.interests{grid-template-columns:1fr}
     .stats{grid-template-columns:repeat(2,1fr)}
     .contact{grid-template-columns:1fr;padding:28px}
     .pub{grid-template-columns:1fr;gap:4px}
     nav ul{display:none}
+    nav .pill{padding-left:12px}
   }
 </style>
 </head>
 <body>
+<div class="bgfx" aria-hidden="true"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="grain"></div></div>
 
 <nav>
-  <div class="wrap">
+  <div class="pill glass">
     <a class="brand" href="#top">
       <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 6C32 6 12 30 12 42a20 20 0 0 0 40 0C52 30 32 6 32 6Z" fill="currentColor" style="color:var(--accent)"/></svg>
       Jiho Jeong
@@ -179,35 +195,21 @@
       <li><a href="#cv">CV</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <button id="themeBtn" aria-label="Toggle dark mode" title="Toggle theme">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+    <button id="themeBtn" aria-label="Toggle light/dark" title="Toggle theme">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
     </button>
   </div>
 </nav>
 
 <header class="hero" id="top">
-  <svg class="ripples" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-    <circle cx="1000" cy="120" r="60"/><circle cx="1000" cy="120" r="120"/><circle cx="1000" cy="120" r="180"/><circle cx="1000" cy="120" r="240"/>
-    <circle cx="150" cy="420" r="50"/><circle cx="150" cy="420" r="110"/><circle cx="150" cy="420" r="170"/>
-  </svg>
   <div class="wrap">
-    <div>
-      <div class="eyebrow">Postdoctoral Researcher · KICT</div>
-      <h1>Jiho Jeong<br><span>Hydrology × Deep Learning</span></h1>
+    <div class="reveal">
+      <div class="eyebrow glass"><i></i>Postdoctoral Researcher · KICT</div>
+      <h1>Jiho Jeong<span>Hydrology × Deep Learning</span></h1>
       <p class="lead">My research spans deep learning, hybrid physics–AI modeling, and hydrogeology, with a focus on water resources and water-related disasters under a changing climate.</p>
       <div class="links" id="heroLinks"></div>
     </div>
-    <div class="avatar-col"><img class="avatar" src="profile.jpg" alt="Portrait of Jiho Jeong"></div>
-  </div>
-  <div class="waves" aria-hidden="true">
-    <svg viewBox="0 0 2400 110" preserveAspectRatio="none">
-      <defs>
-        <path id="wpath" d="M0 60 C 200 20, 400 100, 600 60 S 1000 20, 1200 60 S 1600 100, 1800 60 S 2200 20, 2400 60 V110 H0 Z"/>
-      </defs>
-      <g class="wave w3" style="fill:var(--accent-2)"><use href="#wpath"/><use href="#wpath" x="2400"/></g>
-      <g class="wave w2" style="fill:var(--accent)"><use href="#wpath" y="15"/><use href="#wpath" x="2400" y="15"/></g>
-      <g class="wave" style="fill:var(--bg)"><use href="#wpath" y="35"/><use href="#wpath" x="2400" y="35"/></g>
-    </svg>
+    <div class="avatar-col reveal"><div class="avatar-wrap"><img class="avatar" src="profile.jpg" alt="Portrait of Jiho Jeong"></div></div>
   </div>
 </header>
 
@@ -215,14 +217,14 @@
 
 <section id="about">
   <div class="wrap">
-    <div class="sec-head"><span class="num">01</span><h2>About</h2></div>
+    <div class="sec-head reveal"><span class="num">01</span><h2>About</h2></div>
     <div class="grid2">
-      <div>
+      <div class="reveal">
         <p class="muted" style="margin-top:0">I am a postdoctoral researcher in the <b>Department of Hydro Science and Engineering Research</b> at the Korea Institute of Civil Engineering and Building Technology (KICT). I received my Ph.D. in Geology from Kyungpook National University (2025), where my dissertation focused on <em>improving the real-world applicability of data-driven hydrogeological models through physics-informed approaches</em>.</p>
         <p class="muted">My work sits at the boundary between hydrology and machine learning: embedding governing equations into recurrent networks, transferring knowledge from data-rich to data-scarce monitoring wells, and using generative models to disentangle climatic noise from aquifer signals. At KICT I now extend these ideas to river-flood and urban-inundation forecasting, and to LLM-based decision support for flood warning operations.</p>
         <div class="stats" id="stats"></div>
       </div>
-      <div class="card">
+      <div class="card glass lift reveal">
         <h3>At a glance</h3>
         <ul style="margin:0;padding-left:18px;color:var(--ink-2);font-size:.92rem">
           <li>Physics-informed neural networks (PINN) for groundwater level dynamics</li>
@@ -242,46 +244,48 @@
 
 <section id="research">
   <div class="wrap">
-    <div class="sec-head"><span class="num">02</span><h2>Research Interests</h2></div>
-    <p class="muted" style="margin:0;max-width:720px">A common thread runs through everything below: <b>can a data-driven model be trusted in the field?</b> Each line of work attacks one reason the answer is usually "not yet."</p>
+    <div class="sec-head reveal"><span class="num">02</span><h2>Research Interests</h2></div>
+    <p class="muted reveal" style="margin:0;max-width:720px">A common thread runs through everything below: <b>can a data-driven model be trusted in the field?</b> Each line of work attacks one reason the answer is usually "not yet."</p>
     <div class="interests" id="interests"></div>
   </div>
 </section>
 
 <section id="publications">
   <div class="wrap">
-    <div class="sec-head"><span class="num">03</span><h2>Publications</h2><span class="small">★ first author</span></div>
-    <div class="pub-filter" id="pubFilter">
-      <button data-f="all" class="on">All</button>
-      <button data-f="intl">International (SCI)</button>
-      <button data-f="first">First-author</button>
-      <button data-f="domestic">Domestic (KCI)</button>
+    <div class="sec-head reveal"><span class="num">03</span><h2>Publications</h2><span class="small">★ first author</span></div>
+    <div class="pub-panel glass reveal">
+      <div class="pub-filter" id="pubFilter">
+        <button data-f="all" class="on">All</button>
+        <button data-f="intl">International (SCI)</button>
+        <button data-f="first">First-author</button>
+        <button data-f="domestic">Domestic (KCI)</button>
+      </div>
+      <div id="pubList"></div>
+      <div class="pub-more"><button id="pubMoreBtn">Show all publications</button></div>
     </div>
-    <div id="pubList"></div>
-    <div class="pub-more"><button id="pubMoreBtn">Show all publications</button></div>
     <p class="small" style="margin-top:14px">Full list on <a href="https://scholar.google.com/citations?user=woyb7KIAAAAJ" target="_blank" rel="noopener">Google Scholar</a>.</p>
   </div>
 </section>
 
 <section id="patents">
   <div class="wrap">
-    <div class="sec-head"><span class="num">04</span><h2>Patents</h2></div>
+    <div class="sec-head reveal"><span class="num">04</span><h2>Patents</h2></div>
     <div class="patents" id="patentsGrid"></div>
   </div>
 </section>
 
 <section id="cv">
   <div class="wrap">
-    <div class="sec-head"><span class="num">05</span><h2>Experience &amp; Education</h2></div>
+    <div class="sec-head reveal"><span class="num">05</span><h2>Experience &amp; Education</h2></div>
     <div class="grid2">
-      <div>
-        <h3 style="font-size:1.1rem;margin-bottom:16px">Experience</h3>
+      <div class="card glass lift reveal">
+        <h3>Experience</h3>
         <ul class="timeline" id="experience"></ul>
       </div>
-      <div>
-        <h3 style="font-size:1.1rem;margin-bottom:16px">Education</h3>
+      <div class="card glass lift reveal">
+        <h3>Education</h3>
         <ul class="timeline" id="education"></ul>
-        <h3 style="font-size:1.1rem;margin:10px 0 12px">Service</h3>
+        <h3 style="margin:6px 0 8px">Service</h3>
         <p class="muted" style="margin:0;font-size:.92rem" id="service"></p>
       </div>
     </div>
@@ -290,12 +294,12 @@
 
 <section id="contact">
   <div class="wrap">
-    <div class="contact">
-      <svg class="bubble" style="width:260px;height:260px;right:-60px;top:-80px" viewBox="0 0 100 100"><circle cx="50" cy="50" r="49" fill="none" stroke="rgba(143,220,234,.25)"/></svg>
-      <svg class="bubble" style="width:160px;height:160px;left:-40px;bottom:-60px" viewBox="0 0 100 100"><circle cx="50" cy="50" r="49" fill="none" stroke="rgba(143,220,234,.25)"/></svg>
+    <div class="contact glass reveal">
+      <div class="orb" style="width:260px;height:260px;right:-60px;top:-100px;background:var(--bg-glow-1)"></div>
+      <div class="orb" style="width:200px;height:200px;left:-60px;bottom:-90px;background:var(--bg-glow-2)"></div>
       <div>
         <h2>Let's talk water &amp; models.</h2>
-        <p>Open to collaboration on physics-informed ML, groundwater/flood forecasting, and operational decision-support systems. Happy to share code and data pipelines from published work.</p>
+        <p>Open to collaboration on physics-informed ML, groundwater/flood forecasting, and operational decision-support systems.</p>
       </div>
       <div class="btns" id="contactBtns"></div>
     </div>
@@ -419,8 +423,6 @@ const DATA = {
   ],
   service: "Reviewer for hydrology and geoscience journals (groundwater time-series, streamflow depletion). Short-course lecturer, 2026 Spring Joint Conference on Geological Sciences — AI applications in water resources.",
 };
-
-/* ============================================================ */
 const ICONS = {
   pinn:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 17c3-6 6-6 9 0s6 6 9 0"/><path d="M12 3v6"/><path d="M9 6l3-3 3 3"/></svg>',
   transfer:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 8h13l-3-3"/><path d="M20 16H7l3 3"/></svg>',
@@ -436,7 +438,6 @@ const ICONS = {
 };
 
 function $(s){return document.querySelector(s)}
-const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;");
 
 /* links */
 const links = [
@@ -446,14 +447,15 @@ const links = [
 ];
 if(DATA.orcid) links.push(["orcid","ORCID",DATA.orcid]);
 if(DATA.cvPdf) links.push(["cv","CV (PDF)",DATA.cvPdf]);
-$("#heroLinks").innerHTML = links.map(([i,l,h])=>`<a href="${h}" ${h.startsWith("http")?'target="_blank" rel="noopener"':''}>${ICONS[i]}${l}</a>`).join("");
-$("#contactBtns").innerHTML = links.map(([i,l,h])=>`<a href="${h}" ${h.startsWith("http")?'target="_blank" rel="noopener"':''}>${ICONS[i]}${i==="mail"?DATA.email:l}</a>`).join("");
+const ext = h => h.startsWith("http") ? 'target="_blank" rel="noopener"' : '';
+$("#heroLinks").innerHTML = links.map(([i,l,h])=>`<a href="${h}" ${ext(h)}>${ICONS[i]}${l}</a>`).join("");
+$("#contactBtns").innerHTML = links.map(([i,l,h])=>`<a href="${h}" ${ext(h)}>${ICONS[i]}${i==="mail"?DATA.email:l}</a>`).join("");
 
 /* stats */
-$("#stats").innerHTML = DATA.stats.map(([n,l])=>`<div class="stat"><b>${n}</b><span>${l}</span></div>`).join("");
+$("#stats").innerHTML = DATA.stats.map(([n,l])=>`<div class="stat glass lift reveal"><b>${n}</b><span>${l}</span></div>`).join("");
 
 /* interests */
-$("#interests").innerHTML = DATA.interests.map(i=>`<div class="interest"><div class="ic">${ICONS[i.icon]}</div><div><b>${i.title}</b><span>${i.desc}</span></div></div>`).join("");
+$("#interests").innerHTML = DATA.interests.map(i=>`<div class="interest glass lift reveal"><div class="ic">${ICONS[i.icon]}</div><div><b>${i.title}</b><span>${i.desc}</span></div></div>`).join("");
 
 /* publications */
 const pubs = [...DATA.publications].sort((a,b)=>b.year-a.year || (b.type==="intl")-(a.type==="intl"));
@@ -462,7 +464,7 @@ let filter="all", expanded=false;
 function renderPubs(){
   const list = pubs.filter(p => filter==="all" || (filter==="first"?p.first:p.type===filter));
   $("#pubList").innerHTML = list.map((p,idx)=>`
-    <div class="pub ${(!expanded && idx>=LIMIT)?'hidden':''}">
+    <div class="pub ${(!expanded && idx>=LIMIT)?'hidden':''}" style="animation-delay:${Math.min(idx,8)*45}ms">
       <div class="year">${p.year}</div>
       <div>
         <div class="title">${p.title}</div>
@@ -488,21 +490,42 @@ $("#pubFilter").addEventListener("click",e=>{
 $("#pubMoreBtn").addEventListener("click",()=>{expanded=!expanded;renderPubs();});
 renderPubs();
 
-/* projects / patents / cv */
-$("#patentsGrid").innerHTML = DATA.patents.map(p=>`<div class="patent"><div class="no">${p.no}</div><b>${p.title}</b><span>${p.holder}</span></div>`).join("");
+/* patents / cv */
+$("#patentsGrid").innerHTML = DATA.patents.map(p=>`<div class="patent glass lift reveal"><div class="no">${p.no}</div><b>${p.title}</b><span>${p.holder}</span></div>`).join("");
 $("#experience").innerHTML = DATA.experience.map(e=>`<li><span class="when">${e.when}</span><b>${e.title}</b><span>${e.org}</span></li>`).join("");
 $("#education").innerHTML = DATA.education.map(e=>`<li><span class="when">${e.when}</span><b>${e.title}</b><span>${e.org}</span></li>`).join("");
 $("#service").textContent = DATA.service;
 $("#yr").textContent = new Date().getFullYear();
 
-/* theme toggle */
+/* theme toggle (dark default) */
 const root=document.documentElement;
 try{ const t=localStorage.getItem("theme"); if(t) root.dataset.theme=t; }catch(e){}
 $("#themeBtn").addEventListener("click",()=>{
-  const dark = root.dataset.theme==="dark" || (!root.dataset.theme && matchMedia("(prefers-color-scheme: dark)").matches);
-  root.dataset.theme = dark ? "light" : "dark";
+  root.dataset.theme = root.dataset.theme==="light" ? "dark" : "light";
   try{ localStorage.setItem("theme", root.dataset.theme); }catch(e){}
 });
+
+/* spring scroll reveal (staggered) */
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(en=>{
+    if(!en.isIntersecting) return;
+    const el=en.target;
+    const sibs=[...el.parentElement.querySelectorAll(":scope > .reveal")];
+    const k=Math.max(0,sibs.indexOf(el));
+    el.style.transitionDelay = `${Math.min(k,6)*70}ms`;
+    el.classList.add("in");
+    io.unobserve(el);
+  });
+},{threshold:.12,rootMargin:"0px 0px -6% 0px"});
+document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+
+/* active nav highlight */
+const secs=[...document.querySelectorAll("main section, header.hero")];
+const navLinks=[...document.querySelectorAll("nav ul a")];
+const so=new IntersectionObserver(es=>{
+  es.forEach(en=>{ if(en.isIntersecting){ navLinks.forEach(a=>a.classList.toggle("active",a.getAttribute("href")==="#"+en.target.id)); } });
+},{rootMargin:"-40% 0px -55% 0px"});
+secs.forEach(s=>so.observe(s));
 </script>
 </body>
 </html>
