@@ -131,14 +131,6 @@
   .pub-more{margin-top:14px}
   .pub-more button{background:none;border:1px solid var(--line);color:var(--accent);padding:8px 16px;border-radius:8px;cursor:pointer;font-family:inherit;font-size:.9rem}
 
-  /* projects */
-  .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-  .proj{background:var(--bg-2);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;display:flex;flex-direction:column;gap:8px;position:relative;overflow:hidden}
-  .proj::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(var(--accent),var(--accent-2))}
-  .proj .role{font-family:"JetBrains Mono",monospace;font-size:.74rem;color:var(--accent);letter-spacing:.06em;text-transform:uppercase}
-  .proj h3{font-size:1.02rem}
-  .proj p{margin:0;font-size:.9rem;color:var(--ink-2)}
-
   /* patents */
   .patents{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
   .patent{background:var(--bg-2);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
@@ -183,7 +175,6 @@
       <li><a href="#about">About</a></li>
       <li><a href="#research">Research</a></li>
       <li><a href="#publications">Publications</a></li>
-      <li><a href="#projects">Projects</a></li>
       <li><a href="#patents">Patents</a></li>
       <li><a href="#cv">CV</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -203,7 +194,7 @@
     <div>
       <div class="eyebrow">Postdoctoral Researcher · KICT</div>
       <h1>Jiho Jeong<br><span>Hydrology × Deep Learning</span></h1>
-      <p class="lead">I build physics-informed and transfer-learning models that make groundwater and flood prediction reliable where data are scarce — and interpretable where it matters.</p>
+      <p class="lead">My research spans deep learning, hybrid physics–AI modeling, and hydrogeology, with a focus on water resources and water-related disasters under a changing climate.</p>
       <div class="links" id="heroLinks"></div>
     </div>
     <div class="avatar-col"><img class="avatar" src="profile.jpg" alt="Portrait of Jiho Jeong"></div>
@@ -272,23 +263,16 @@
   </div>
 </section>
 
-<section id="projects">
-  <div class="wrap">
-    <div class="sec-head"><span class="num">04</span><h2>Projects</h2></div>
-    <div class="projects" id="projectsGrid"></div>
-  </div>
-</section>
-
 <section id="patents">
   <div class="wrap">
-    <div class="sec-head"><span class="num">05</span><h2>Patents</h2></div>
+    <div class="sec-head"><span class="num">04</span><h2>Patents</h2></div>
     <div class="patents" id="patentsGrid"></div>
   </div>
 </section>
 
 <section id="cv">
   <div class="wrap">
-    <div class="sec-head"><span class="num">06</span><h2>Experience &amp; Education</h2></div>
+    <div class="sec-head"><span class="num">05</span><h2>Experience &amp; Education</h2></div>
     <div class="grid2">
       <div>
         <h3 style="font-size:1.1rem;margin-bottom:16px">Experience</h3>
@@ -420,26 +404,14 @@ const DATA = {
       venue:"EGU General Assembly 2025, EGU25-5434", doi:"" },
   ],
 
-  projects: [
-    { role:"Participating researcher · proposal lead", title:"AI–physics hybrid flood forecasting for expanded flood-warning stations",
-      desc:"KEITI Climate-Adaptation Water-Disaster R&D (RS-2026-25504052). Coordinated the multi-institution proposal; now developing multimodal deep-learning forecasting on top of distributed rainfall-runoff outputs and an LLM-based flood-warning decision-support system.", tags:["Hybrid modeling","Transformer","LLM","2026–"] },
-    { role:"Participating researcher", title:"Deep-learning surrogate for urban inundation (SWMM 1D–2D)",
-      desc:"Two-stage surrogate model — rainfall → manhole overflow → surface inundation — that replaces the compute bottleneck of physically based urban-flood simulation, enabling thousands of scenario runs for climate risk assessment.", tags:["Surrogate model","Urban flood","Data QA"] },
-    { role:"Researcher", title:"Multi-station flood water-level prediction, Yeongsan River basin",
-      desc:"Masked transfer learning with adaptive gating for Transformer-based prediction across 57 stations (31 reference, 26 target) at 10-minute resolution, with outlier-aware preprocessing for the Yeongsan River Flood Control Office.", tags:["Transfer learning","Flood forecasting","In preparation"] },
-    { role:"Co-author", title:"Connectivity-aware graph learning for island & nationwide aquifers",
-      desc:"Hybrid adjacency (hydraulic properties + chemistry) with DCRNN/GRU for Jeju groundwater monitoring (under review), extended to a 968-borehole national network for spatiotemporal groundwater prediction.", tags:["GNN","Spatiotemporal","Under review"] },
-  ],
-
   patents: [
-    { no:"KR 10-2614096", title:"Apparatus and method for generating a prediction model (예측 모델 생성 장치 및 방법)", holder:"Kyungpook National University · registered Dec 2023" },
-    { no:"KR 10-2615493", title:"Deep-learning-based probabilistic prediction of normal groundwater level range (딥러닝 기반 지하수위 정상 범위 확률론적 예측 장치 및 그 방법)", holder:"Kyungpook National University · registered Dec 2023" },
+    { no:"KR 10-2614096", title:"Apparatus and method for generating a prediction model", holder:"Kyungpook National University · registered Dec 2023" },
+    { no:"KR 10-2615493", title:"Apparatus and method for deep-learning-based probabilistic prediction of normal groundwater level range", holder:"Kyungpook National University · registered Dec 2023" },
   ],
 
   experience: [
     { when:"2025 – present", title:"Postdoctoral Researcher", org:"Korea Institute of Civil Engineering and Building Technology (KICT), Dept. of Hydro Science and Engineering Research" },
-    { when:"2025", title:"Researcher", org:"Institute of Sustainable Earth and Environmental Dynamics (SEED), Pukyong National University" },
-    { when:"2018 – 2025", title:"Graduate Researcher · Lab manager (7 yrs)", org:"Hydrogeology & Data Science Lab, Dept. of Geology, Kyungpook National University" },
+    { when:"2025", title:"Postdoctoral Researcher", org:"Institute of Sustainable Earth and Environmental Dynamics (SEED), Pukyong National University" },
   ],
   education: [
     { when:"2025", title:"Ph.D. in Geology (Geological Data Science)", org:"Kyungpook National University — Dissertation: Improving real-world applicability of data-driven hydrogeological models through physics-informed approaches" },
@@ -517,7 +489,6 @@ $("#pubMoreBtn").addEventListener("click",()=>{expanded=!expanded;renderPubs();}
 renderPubs();
 
 /* projects / patents / cv */
-$("#projectsGrid").innerHTML = DATA.projects.map(p=>`<div class="proj"><div class="role">${p.role}</div><h3>${p.title}</h3><p>${p.desc}</p><div class="tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join("")}</div></div>`).join("");
 $("#patentsGrid").innerHTML = DATA.patents.map(p=>`<div class="patent"><div class="no">${p.no}</div><b>${p.title}</b><span>${p.holder}</span></div>`).join("");
 $("#experience").innerHTML = DATA.experience.map(e=>`<li><span class="when">${e.when}</span><b>${e.title}</b><span>${e.org}</span></li>`).join("");
 $("#education").innerHTML = DATA.education.map(e=>`<li><span class="when">${e.when}</span><b>${e.title}</b><span>${e.org}</span></li>`).join("");
